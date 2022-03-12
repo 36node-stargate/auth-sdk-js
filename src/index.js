@@ -489,6 +489,37 @@ export default class SDK {
         headers: { Authorization: this.auth },
       });
     },
+    /**
+     * Get some config of scope
+     *
+     * @param {GetConfigsRequest} req getConfigs request
+     * @returns {Promise<GetConfigsResponse>} config of scope
+     */
+    getConfigs: req => {
+      const {} = req || {};
+
+      return fetch(`${this.base}/configs`, {
+        method: "GET",
+        headers: { Authorization: this.auth },
+      });
+    },
+    /**
+     * Update some config of scope
+     *
+     * @param {UpdateConfigsRequest} req updateConfigs request
+     * @returns {Promise<UpdateConfigsResponse>} config of scope
+     */
+    updateConfigs: req => {
+      const { body } = req || {};
+
+      if (!body) throw new Error("requetBody is required for updateConfigs");
+
+      return fetch(`${this.base}/configs`, {
+        method: "PUT",
+        body,
+        headers: { Authorization: this.auth },
+      });
+    },
   };
   /**
    * provider's methods
@@ -1488,6 +1519,26 @@ export default class SDK {
       return fetch(`${this.base}/invitations/${code}/!validate`, {
         method: "GET",
         query,
+        headers: { Authorization: this.auth },
+      });
+    },
+  };
+  /**
+   * captcha's methods
+   */
+  captcha = {
+    /**
+     * 根据key获取验证码
+     *
+     * @param {GetCaptchaRequest} req getCaptcha request
+     */
+    getCaptcha: req => {
+      const { key } = req || {};
+
+      if (!key) throw new Error("key is required for getCaptcha");
+
+      return fetch(`${this.base}/captcha/${key}`, {
+        method: "GET",
         headers: { Authorization: this.auth },
       });
     },

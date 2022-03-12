@@ -14,6 +14,7 @@ declare class SDK {
   session: SessionAPI;
   validation: ValidationAPI;
   invitation: InvitationAPI;
+  captcha: CaptchaAPI;
 }
 
 export interface Options {
@@ -132,6 +133,14 @@ export interface ScopeAPI {
    * list profile form items
    */
   listProfileItems(req: ListProfileItemsRequest): Promise<ListProfileItemsResponse>;
+  /**
+   * Get some config of scope
+   */
+  getConfigs(req: GetConfigsRequest): Promise<GetConfigsResponse>;
+  /**
+   * Update some config of scope
+   */
+  updateConfigs(req: UpdateConfigsRequest): Promise<UpdateConfigsResponse>;
 }
 export interface ProviderAPI {
   /**
@@ -361,6 +370,12 @@ export interface InvitationAPI {
    */
   getInvitation(req: GetInvitationRequest): Promise<GetInvitationResponse>;
 }
+export interface CaptchaAPI {
+  /**
+   * 根据key获取验证码
+   */
+  getCaptcha(req: GetCaptchaRequest): Promise<void>;
+}
 
 export interface CreateScopeRequest {
   body: {
@@ -390,6 +405,14 @@ export interface CreateScopeRequest {
            * 角色
            */
           roles?: string[];
+          /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
           /**
            * 过期时间
            */
@@ -557,6 +580,14 @@ export interface CreateScopeResponse {
            */
           roles?: string[];
           /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
+          /**
            * 过期时间
            */
           expireAt?: Date;
@@ -700,6 +731,14 @@ export interface CreateScopeResponse {
            * 角色
            */
           roles?: string[];
+          /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
           /**
            * 过期时间
            */
@@ -879,6 +918,14 @@ export interface ListScopesResponse {
            */
           roles?: string[];
           /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
+          /**
            * 过期时间
            */
           expireAt?: Date;
@@ -1022,6 +1069,14 @@ export interface ListScopesResponse {
            * 角色
            */
           roles?: string[];
+          /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
           /**
            * 过期时间
            */
@@ -1196,6 +1251,14 @@ export interface GetScopeResponse {
            */
           roles?: string[];
           /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
+          /**
            * 过期时间
            */
           expireAt?: Date;
@@ -1339,6 +1402,14 @@ export interface GetScopeResponse {
            * 角色
            */
           roles?: string[];
+          /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
           /**
            * 过期时间
            */
@@ -1504,6 +1575,14 @@ export interface UpdateScopeRequest {
            */
           roles?: string[];
           /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
+          /**
            * 过期时间
            */
           expireAt?: Date;
@@ -1665,6 +1744,14 @@ export interface UpdateScopeResponse {
            */
           roles?: string[];
           /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
+          /**
            * 过期时间
            */
           expireAt?: Date;
@@ -1808,6 +1895,14 @@ export interface UpdateScopeResponse {
            * 角色
            */
           roles?: string[];
+          /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
           /**
            * 过期时间
            */
@@ -2742,6 +2837,65 @@ export interface ListProfileItemsResponse {
     "x-total-count"?: number;
   };
 }
+export interface GetConfigsResponse {
+  /**
+   * 用户池部分设置，主要用于小程序同步，避免经常修改
+   */
+  body: {
+    /**
+     * 子项 关键字
+     */
+    key?: string;
+    /**
+     * 子项 值
+     */
+    value?: string;
+    /**
+     * 子项 描述
+     */
+    desc?: string;
+  }[];
+}
+export interface UpdateConfigsRequest {
+  /**
+   * 用户池部分设置修改
+   */
+  body: {
+    data?: {
+      /**
+       * 子项 关键字
+       */
+      key?: string;
+      /**
+       * 子项 值
+       */
+      value?: string;
+      /**
+       * 子项 描述
+       */
+      desc?: string;
+    }[];
+  };
+}
+export interface UpdateConfigsResponse {
+  /**
+   * 用户池部分设置，主要用于小程序同步，避免经常修改
+   */
+  body: {
+    /**
+     * 子项 关键字
+     */
+    key?: string;
+    /**
+     * 子项 值
+     */
+    value?: string;
+    /**
+     * 子项 描述
+     */
+    desc?: string;
+  }[];
+}
 export interface CreateScopeProviderRequest {
   scopeId: string;
   body: {
@@ -3075,7 +3229,7 @@ export interface ListScopeProfilesResponse {
          */
         email?: string;
         /**
-         * provider id
+         * 最近登录的provider id
          */
         provider?: string;
         /**
@@ -3670,6 +3824,14 @@ export interface CreateScopeUserRequest {
      */
     roles?: string[];
     /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
+    /**
      * 过期时间
      */
     expireAt?: Date;
@@ -3815,6 +3977,14 @@ export interface CreateScopeUserResponse {
      */
     roles?: string[];
     /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
+    /**
      * 过期时间
      */
     expireAt?: Date;
@@ -3942,6 +4112,8 @@ export interface ListScopeUsersRequest {
     _offset?: number;
     _select?: string;
     _sort?: string;
+    active?: boolean;
+    lock?: boolean;
     ns?: string[] | string;
     ns_like?: string;
     roles?: string[] | string;
@@ -3970,6 +4142,14 @@ export interface ListScopeUsersResponse {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -4121,6 +4301,14 @@ export interface GetScopeUserResponse {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -4361,6 +4549,14 @@ export interface UpdateScopeUserRequest {
      */
     roles?: string[];
     /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
+    /**
      * 过期时间
      */
     expireAt?: Date;
@@ -4414,6 +4610,14 @@ export interface UpdateScopeUserResponse {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -4558,6 +4762,14 @@ export interface CreateUserRequest {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -4704,6 +4916,14 @@ export interface CreateUserResponse {
      */
     roles?: string[];
     /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
+    /**
      * 过期时间
      */
     expireAt?: Date;
@@ -4831,6 +5051,7 @@ export interface ListUsersRequest {
     _offset?: number;
     _select?: string;
     _sort?: string;
+    active?: boolean;
     ns?: string[] | string;
     ns_like?: string;
     roles?: string[] | string;
@@ -4862,6 +5083,14 @@ export interface ListUsersResponse {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -5012,6 +5241,14 @@ export interface GetUserResponse {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -5251,6 +5488,14 @@ export interface UpdateUserRequest {
      */
     roles?: string[];
     /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
+    /**
      * 过期时间
      */
     expireAt?: Date;
@@ -5304,6 +5549,14 @@ export interface UpdateUserResponse {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -5467,6 +5720,14 @@ export interface UpdateUserPasswordResponse {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -5719,7 +5980,7 @@ export interface RegisterUserRequest {
     /**
      * 邀请码
      */
-    invite?: string;
+    inviteCode?: string;
   };
 }
 export interface RegisterUserResponse {
@@ -5744,6 +6005,14 @@ export interface RegisterUserResponse {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -6018,6 +6287,14 @@ export interface ThirdRegisterUserResponse {
      */
     roles?: string[];
     /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
+    /**
      * 过期时间
      */
     expireAt?: Date;
@@ -6180,6 +6457,14 @@ export interface BindUserResponse {
      * 角色
      */
     roles?: string[];
+    /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
     /**
      * 过期时间
      */
@@ -6353,6 +6638,14 @@ export interface ResetPasswordResponse {
      */
     roles?: string[];
     /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
+    /**
      * 过期时间
      */
     expireAt?: Date;
@@ -6519,7 +6812,7 @@ export interface ListGithubsResponse {
      */
     email?: string;
     /**
-     * provider id
+     * 最近登录的provider id
      */
     provider?: string;
     /**
@@ -6588,6 +6881,14 @@ export interface ListScopeSessionsResponse {
            * 角色
            */
           roles?: string[];
+          /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
           /**
            * 过期时间
            */
@@ -6772,6 +7073,14 @@ export interface GetScopeSessionResponse {
            * 角色
            */
           roles?: string[];
+          /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
           /**
            * 过期时间
            */
@@ -6963,6 +7272,14 @@ export interface UpdateScopeSessionResponse {
            */
           roles?: string[];
           /**
+           * 是否锁定
+           */
+          lock?: boolean;
+          /**
+           * 是否激活
+           */
+          active?: boolean;
+          /**
            * 过期时间
            */
           expireAt?: Date;
@@ -7152,6 +7469,14 @@ export interface CreateSessionRequest {
      * 微信小程序登陆时的解密iv
      */
     iv?: string;
+    /**
+     * 验证码key
+     */
+    captchaKey?: string;
+    /**
+     * 验证码key
+     */
+    captchaCode?: string;
   };
 }
 export interface CreateSessionResponse {
@@ -7231,6 +7556,14 @@ export interface CreateSessionResponse {
        * 角色
        */
       roles?: string[];
+      /**
+       * 是否锁定
+       */
+      lock?: boolean;
+      /**
+       * 是否激活
+       */
+      active?: boolean;
       /**
        * 过期时间
        */
@@ -7386,7 +7719,7 @@ export interface CreateSessionResponse {
        */
       email?: string;
       /**
-       * provider id
+       * 最近登录的provider id
        */
       provider?: string;
       /**
@@ -7542,6 +7875,14 @@ export interface GetSessionResponse {
        */
       roles?: string[];
       /**
+       * 是否锁定
+       */
+      lock?: boolean;
+      /**
+       * 是否激活
+       */
+      active?: boolean;
+      /**
        * 过期时间
        */
       expireAt?: Date;
@@ -7696,7 +8037,7 @@ export interface GetSessionResponse {
        */
       email?: string;
       /**
-       * provider id
+       * 最近登录的provider id
        */
       provider?: string;
       /**
@@ -7839,6 +8180,10 @@ export interface CreateScopeInvitationRequest {
      * 是否重复使用
      */
     reuse?: boolean;
+    /**
+     * 邀请码关联邮箱
+     */
+    email?: string;
   } & {
     code: string;
   };
@@ -7870,9 +8215,13 @@ export interface CreateScopeInvitationResponse {
      */
     used?: boolean;
     /**
-     * 验证码使用时间
+     * 邀请码使用时间
      */
     usedAt?: Date;
+    /**
+     * 邀请码关联邮箱
+     */
+    email?: string;
   } & {
     id: string;
     updateAt?: Date;
@@ -7921,9 +8270,13 @@ export interface ListScopeInvitationsResponse {
      */
     used?: boolean;
     /**
-     * 验证码使用时间
+     * 邀请码使用时间
      */
     usedAt?: Date;
+    /**
+     * 邀请码关联邮箱
+     */
+    email?: string;
   } & {
     id: string;
     updateAt?: Date;
@@ -7966,9 +8319,13 @@ export interface GetScopeInvitationResponse {
      */
     used?: boolean;
     /**
-     * 验证码使用时间
+     * 邀请码使用时间
      */
     usedAt?: Date;
+    /**
+     * 邀请码关联邮箱
+     */
+    email?: string;
   } & {
     id: string;
     updateAt?: Date;
@@ -8000,6 +8357,10 @@ export interface UpdateScopeInvitationRequest {
      * 是否重复使用
      */
     reuse?: boolean;
+    /**
+     * 邀请码关联邮箱
+     */
+    email?: string;
   };
 }
 export interface UpdateScopeInvitationResponse {
@@ -8029,9 +8390,13 @@ export interface UpdateScopeInvitationResponse {
      */
     used?: boolean;
     /**
-     * 验证码使用时间
+     * 邀请码使用时间
      */
     usedAt?: Date;
+    /**
+     * 邀请码关联邮箱
+     */
+    email?: string;
   } & {
     id: string;
     updateAt?: Date;
@@ -8077,9 +8442,13 @@ export interface GetInvitationResponse {
      */
     used?: boolean;
     /**
-     * 验证码使用时间
+     * 邀请码使用时间
      */
     usedAt?: Date;
+    /**
+     * 邀请码关联邮箱
+     */
+    email?: string;
   } & {
     id: string;
     updateAt?: Date;
@@ -8087,6 +8456,9 @@ export interface GetInvitationResponse {
     createAt?: Date;
     createBy?: string;
   };
+}
+export interface GetCaptchaRequest {
+  key: string;
 }
 export interface ScopeDoc {
   /**
@@ -8119,6 +8491,14 @@ export interface ScopeDoc {
          * 角色
          */
         roles?: string[];
+        /**
+         * 是否锁定
+         */
+        lock?: boolean;
+        /**
+         * 是否激活
+         */
+        active?: boolean;
         /**
          * 过期时间
          */
@@ -8263,6 +8643,14 @@ export interface ScopeDoc {
          * 角色
          */
         roles?: string[];
+        /**
+         * 是否锁定
+         */
+        lock?: boolean;
+        /**
+         * 是否激活
+         */
+        active?: boolean;
         /**
          * 过期时间
          */
@@ -8424,6 +8812,14 @@ export type ScopeCreateDoc = {
          */
         roles?: string[];
         /**
+         * 是否锁定
+         */
+        lock?: boolean;
+        /**
+         * 是否激活
+         */
+        active?: boolean;
+        /**
          * 过期时间
          */
         expireAt?: Date;
@@ -8567,6 +8963,14 @@ export type ScopeCreateDoc = {
          * 角色
          */
         roles?: string[];
+        /**
+         * 是否锁定
+         */
+        lock?: boolean;
+        /**
+         * 是否激活
+         */
+        active?: boolean;
         /**
          * 过期时间
          */
@@ -8733,6 +9137,14 @@ export type Scope = {
          */
         roles?: string[];
         /**
+         * 是否锁定
+         */
+        lock?: boolean;
+        /**
+         * 是否激活
+         */
+        active?: boolean;
+        /**
          * 过期时间
          */
         expireAt?: Date;
@@ -8876,6 +9288,14 @@ export type Scope = {
          * 角色
          */
         roles?: string[];
+        /**
+         * 是否锁定
+         */
+        lock?: boolean;
+        /**
+         * 是否激活
+         */
+        active?: boolean;
         /**
          * 过期时间
          */
@@ -9501,6 +9921,62 @@ export interface ScopeProfileItem {
 }
 
 /**
+ * scope config 子项
+ */
+export interface ScopeConfigItem {
+  /**
+   * 子项 关键字
+   */
+  key?: string;
+  /**
+   * 子项 值
+   */
+  value?: string;
+  /**
+   * 子项 描述
+   */
+  desc?: string;
+}
+
+/**
+ * 用户池部分设置，主要用于小程序同步，避免经常修改
+ */
+export type ScopeConfig = {
+  /**
+   * 子项 关键字
+   */
+  key?: string;
+  /**
+   * 子项 值
+   */
+  value?: string;
+  /**
+   * 子项 描述
+   */
+  desc?: string;
+}[];
+
+/**
+ * 用户池部分设置修改
+ */
+export interface ScopeConfigUpdateBody {
+  data?: {
+    /**
+     * 子项 关键字
+     */
+    key?: string;
+    /**
+     * 子项 值
+     */
+    value?: string;
+    /**
+     * 子项 描述
+     */
+    desc?: string;
+  }[];
+}
+
+/**
  * 验证方式 例如 微信 验证
  */
 export interface ProviderDoc {
@@ -9641,7 +10117,7 @@ export interface GithubDoc {
    */
   email?: string;
   /**
-   * provider id
+   * 最近登录的provider id
    */
   provider?: string;
   /**
@@ -9688,7 +10164,7 @@ export type Github = {
    */
   email?: string;
   /**
-   * provider id
+   * 最近登录的provider id
    */
   provider?: string;
   /**
@@ -9824,7 +10300,7 @@ export type Profile =
        */
       email?: string;
       /**
-       * provider id
+       * 最近登录的provider id
        */
       provider?: string;
       /**
@@ -10115,6 +10591,14 @@ export interface UserDefaultPropDoc {
    */
   roles?: string[];
   /**
+   * 是否锁定
+   */
+  lock?: boolean;
+  /**
+   * 是否激活
+   */
+  active?: boolean;
+  /**
    * 过期时间
    */
   expireAt?: Date;
@@ -10154,6 +10638,14 @@ export type User = {
    * 角色
    */
   roles?: string[];
+  /**
+   * 是否锁定
+   */
+  lock?: boolean;
+  /**
+   * 是否激活
+   */
+  active?: boolean;
   /**
    * 过期时间
    */
@@ -10297,6 +10789,14 @@ export type UserCreateBody = {
    * 角色
    */
   roles?: string[];
+  /**
+   * 是否锁定
+   */
+  lock?: boolean;
+  /**
+   * 是否激活
+   */
+  active?: boolean;
   /**
    * 过期时间
    */
@@ -10539,6 +11039,14 @@ export type UserUpdateBody = {
    */
   roles?: string[];
   /**
+   * 是否锁定
+   */
+  lock?: boolean;
+  /**
+   * 是否激活
+   */
+  active?: boolean;
+  /**
    * 过期时间
    */
   expireAt?: Date;
@@ -10713,7 +11221,7 @@ export type UserRegisterBody = {
   /**
    * 邀请码
    */
-  invite?: string;
+  inviteCode?: string;
 };
 
 export type UserThirdRegisterBody = {
@@ -10969,6 +11477,14 @@ export interface SessionDoc {
      */
     roles?: string[];
     /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
+    /**
      * 过期时间
      */
     expireAt?: Date;
@@ -11123,7 +11639,7 @@ export interface SessionDoc {
      */
     email?: string;
     /**
-     * provider id
+     * 最近登录的provider id
      */
     provider?: string;
     /**
@@ -11264,6 +11780,14 @@ export type Session = {
      */
     roles?: string[];
     /**
+     * 是否锁定
+     */
+    lock?: boolean;
+    /**
+     * 是否激活
+     */
+    active?: boolean;
+    /**
      * 过期时间
      */
     expireAt?: Date;
@@ -11418,7 +11942,7 @@ export type Session = {
      */
     email?: string;
     /**
-     * provider id
+     * 最近登录的provider id
      */
     provider?: string;
     /**
@@ -11534,6 +12058,14 @@ export type SessionCreateBody = {
    * 微信小程序登陆时的解密iv
    */
   iv?: string;
+  /**
+   * 验证码key
+   */
+  captchaKey?: string;
+  /**
+   * 验证码key
+   */
+  captchaCode?: string;
 };
 
 export type ScopeSession = {
@@ -11568,6 +12100,14 @@ export type ScopeSession = {
          * 角色
          */
         roles?: string[];
+        /**
+         * 是否锁定
+         */
+        lock?: boolean;
+        /**
+         * 是否激活
+         */
+        active?: boolean;
         /**
          * 过期时间
          */
@@ -11820,9 +12360,13 @@ export interface InvitationDoc {
    */
   used?: boolean;
   /**
-   * 验证码使用时间
+   * 邀请码使用时间
    */
   usedAt?: Date;
+  /**
+   * 邀请码关联邮箱
+   */
+  email?: string;
 }
 
 export type Invitation = {
@@ -11851,9 +12395,13 @@ export type Invitation = {
    */
   used?: boolean;
   /**
-   * 验证码使用时间
+   * 邀请码使用时间
    */
   usedAt?: Date;
+  /**
+   * 邀请码关联邮箱
+   */
+  email?: string;
 } & {
   id: string;
   updateAt?: Date;
@@ -11891,9 +12439,13 @@ export type InvitationCreateBody = {
    */
   used?: boolean;
   /**
-   * 验证码使用时间
+   * 邀请码使用时间
    */
   usedAt?: Date;
+  /**
+   * 邀请码关联邮箱
+   */
+  email?: string;
 } & {
   code: string;
 };
