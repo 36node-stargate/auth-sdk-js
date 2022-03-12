@@ -25,7 +25,7 @@
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "gen": "swagen sdk ../auth/openapi.yml && npm run format",
     "lint": "sketch lint src",
-    "release": "standard-version -t release-v",
+    "release": "standard-version",
     "start": "bin/mock-server.js",
     "test": "NODE_ENV=test sketch test --env=node"
   },
