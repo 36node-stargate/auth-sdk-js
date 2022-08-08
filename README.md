@@ -1,11 +1,11 @@
-# @36node/auth-sdk
+# @36node-stargate/auth-sdk
 
 [![version][0]][1] [![downloads][2]][3]
 
 ## Install
 
 ```bash
-yarn add @36node/auth-sdk
+yarn add @36node-stargate/auth-sdk
 ```
 
 ## Usage
@@ -13,15 +13,16 @@ yarn add @36node/auth-sdk
 ### SDK
 
 ```js
-const SDK = require("@36node/auth-sdk");
+const SDK = require("@36node-stargate/auth-sdk");
 
 const sdk = new SDK();
 sdk.namespace.listNamespaces();
 ```
 
 ### Mock
+
 ```js
-const mock = require("@36node/auth-sdk/mock");
+const mock = require("@36node-stargate/auth-sdk/mock");
 
 const db = mock.createDB();
 
