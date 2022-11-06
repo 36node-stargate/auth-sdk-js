@@ -430,6 +430,11 @@ export interface CreateScopeRequest {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -604,6 +609,11 @@ export interface CreateScopeResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -756,6 +766,11 @@ export interface CreateScopeResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -942,6 +957,11 @@ export interface ListScopesResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -1094,6 +1114,11 @@ export interface ListScopesResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -1275,6 +1300,11 @@ export interface GetScopeResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -1427,6 +1457,11 @@ export interface GetScopeResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -1599,6 +1634,11 @@ export interface UpdateScopeRequest {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -1768,6 +1808,11 @@ export interface UpdateScopeResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -1920,6 +1965,11 @@ export interface UpdateScopeResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -2936,7 +2986,7 @@ export interface CreateScopeProviderResponse {
     /**
      * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
      */
-    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WECHAT_PHONE" | "WXQY" | "GITHUB";
     /**
      * app id
      */
@@ -2983,7 +3033,7 @@ export interface ListScopeProvidersResponse {
     /**
      * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
      */
-    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WECHAT_PHONE" | "WXQY" | "GITHUB";
     /**
      * app id
      */
@@ -3028,7 +3078,7 @@ export interface GetScopeProviderResponse {
     /**
      * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
      */
-    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WECHAT_PHONE" | "WXQY" | "GITHUB";
     /**
      * app id
      */
@@ -3099,7 +3149,7 @@ export interface UpdateScopeProviderResponse {
     /**
      * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
      */
-    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WECHAT_PHONE" | "WXQY" | "GITHUB";
     /**
      * app id
      */
@@ -3150,7 +3200,7 @@ export interface ListProvidersResponse {
     /**
      * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
      */
-    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+    type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WECHAT_PHONE" | "WXQY" | "GITHUB";
     /**
      * app id
      */
@@ -3693,6 +3743,7 @@ export interface ListNamespacesRequest {
     _select?: string;
     _sort?: string;
     id_like: string;
+    name_like?: string;
     labels?: string[] | string;
   };
 }
@@ -3848,6 +3899,11 @@ export interface CreateScopeUserRequest {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -4001,6 +4057,11 @@ export interface CreateScopeUserResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -4167,6 +4228,11 @@ export interface ListScopeUsersResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -4326,6 +4392,11 @@ export interface GetScopeUserResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -4573,6 +4644,11 @@ export interface UpdateScopeUserRequest {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 密码
@@ -4635,6 +4711,11 @@ export interface UpdateScopeUserResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -4787,6 +4868,11 @@ export interface CreateUserRequest {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -4940,6 +5026,11 @@ export interface CreateUserResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -5059,6 +5150,12 @@ export interface ListUsersRequest {
     username_like?: string;
     name_like?: string;
     nickname_like?: string;
+    phone?: string[] | string;
+    q?: string;
+    labels?: string[] | string;
+    labels_ne?: string;
+    type?: string[] | string;
+    type_ne?: string;
   };
 }
 export interface ListUsersResponse {
@@ -5108,6 +5205,11 @@ export interface ListUsersResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -5266,6 +5368,11 @@ export interface GetUserResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -5512,6 +5619,11 @@ export interface UpdateUserRequest {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 密码
@@ -5574,6 +5686,11 @@ export interface UpdateUserResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -5745,6 +5862,11 @@ export interface UpdateUserPasswordResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -6030,6 +6152,11 @@ export interface RegisterUserResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -6311,6 +6438,11 @@ export interface ThirdRegisterUserResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -6482,6 +6614,11 @@ export interface BindUserResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -6662,6 +6799,11 @@ export interface ResetPasswordResponse {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -6906,6 +7048,11 @@ export interface ListScopeSessionsResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -7098,6 +7245,11 @@ export interface GetScopeSessionResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -7296,6 +7448,11 @@ export interface UpdateScopeSessionResponse {
             | "WXAPP"
             | "WXCORP_INSEDE"
             | "WXCORP_OUTSIDE";
+          labels?: string[];
+          /**
+           * 用户类型
+           */
+          type?: string;
         } & {
           /**
            * 头像
@@ -7502,7 +7659,15 @@ export interface CreateSessionResponse {
           /**
            * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
            */
-          type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+          type?:
+            | "PASSWORD"
+            | "EMAIL"
+            | "PHONE"
+            | "WECHAT"
+            | "WXAPP"
+            | "WECHAT_PHONE"
+            | "WXQY"
+            | "GITHUB";
           /**
            * app id
            */
@@ -7581,6 +7746,11 @@ export interface CreateSessionResponse {
         | "WXAPP"
         | "WXCORP_INSEDE"
         | "WXCORP_OUTSIDE";
+      labels?: string[];
+      /**
+       * 用户类型
+       */
+      type?: string;
     } & {
       /**
        * 头像
@@ -7820,7 +7990,15 @@ export interface GetSessionResponse {
           /**
            * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
            */
-          type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+          type?:
+            | "PASSWORD"
+            | "EMAIL"
+            | "PHONE"
+            | "WECHAT"
+            | "WXAPP"
+            | "WECHAT_PHONE"
+            | "WXQY"
+            | "GITHUB";
           /**
            * app id
            */
@@ -7899,6 +8077,11 @@ export interface GetSessionResponse {
         | "WXAPP"
         | "WXCORP_INSEDE"
         | "WXCORP_OUTSIDE";
+      labels?: string[];
+      /**
+       * 用户类型
+       */
+      type?: string;
     } & {
       /**
        * 头像
@@ -8516,6 +8699,11 @@ export interface ScopeDoc {
           | "WXAPP"
           | "WXCORP_INSEDE"
           | "WXCORP_OUTSIDE";
+        labels?: string[];
+        /**
+         * 用户类型
+         */
+        type?: string;
       } & {
         /**
          * 头像
@@ -8668,6 +8856,11 @@ export interface ScopeDoc {
           | "WXAPP"
           | "WXCORP_INSEDE"
           | "WXCORP_OUTSIDE";
+        labels?: string[];
+        /**
+         * 用户类型
+         */
+        type?: string;
       } & {
         /**
          * 头像
@@ -8836,6 +9029,11 @@ export type ScopeCreateDoc = {
           | "WXAPP"
           | "WXCORP_INSEDE"
           | "WXCORP_OUTSIDE";
+        labels?: string[];
+        /**
+         * 用户类型
+         */
+        type?: string;
       } & {
         /**
          * 头像
@@ -8988,6 +9186,11 @@ export type ScopeCreateDoc = {
           | "WXAPP"
           | "WXCORP_INSEDE"
           | "WXCORP_OUTSIDE";
+        labels?: string[];
+        /**
+         * 用户类型
+         */
+        type?: string;
       } & {
         /**
          * 头像
@@ -9161,6 +9364,11 @@ export type Scope = {
           | "WXAPP"
           | "WXCORP_INSEDE"
           | "WXCORP_OUTSIDE";
+        labels?: string[];
+        /**
+         * 用户类型
+         */
+        type?: string;
       } & {
         /**
          * 头像
@@ -9313,6 +9521,11 @@ export type Scope = {
           | "WXAPP"
           | "WXCORP_INSEDE"
           | "WXCORP_OUTSIDE";
+        labels?: string[];
+        /**
+         * 用户类型
+         */
+        type?: string;
       } & {
         /**
          * 头像
@@ -9987,7 +10200,7 @@ export interface ProviderDoc {
   /**
    * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
    */
-  type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+  type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WECHAT_PHONE" | "WXQY" | "GITHUB";
   /**
    * app id
    */
@@ -10018,7 +10231,7 @@ export type Provider = {
   /**
    * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
    */
-  type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+  type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WECHAT_PHONE" | "WXQY" | "GITHUB";
   /**
    * app id
    */
@@ -10055,7 +10268,7 @@ export type ProviderCreateBody = {
   /**
    * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
    */
-  type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+  type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WECHAT_PHONE" | "WXQY" | "GITHUB";
   /**
    * app id
    */
@@ -10615,6 +10828,11 @@ export interface UserDefaultPropDoc {
     | "WXAPP"
     | "WXCORP_INSEDE"
     | "WXCORP_OUTSIDE";
+  labels?: string[];
+  /**
+   * 用户类型
+   */
+  type?: string;
 }
 
 export type User = {
@@ -10663,6 +10881,11 @@ export type User = {
     | "WXAPP"
     | "WXCORP_INSEDE"
     | "WXCORP_OUTSIDE";
+  labels?: string[];
+  /**
+   * 用户类型
+   */
+  type?: string;
 } & {
   /**
    * 头像
@@ -10814,6 +11037,11 @@ export type UserCreateBody = {
     | "WXAPP"
     | "WXCORP_INSEDE"
     | "WXCORP_OUTSIDE";
+  labels?: string[];
+  /**
+   * 用户类型
+   */
+  type?: string;
 } & {
   /**
    * 头像
@@ -11063,6 +11291,11 @@ export type UserUpdateBody = {
     | "WXAPP"
     | "WXCORP_INSEDE"
     | "WXCORP_OUTSIDE";
+  labels?: string[];
+  /**
+   * 用户类型
+   */
+  type?: string;
 } & {
   /**
    * 密码
@@ -11422,7 +11655,15 @@ export interface SessionDoc {
         /**
          * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
          */
-        type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+        type?:
+          | "PASSWORD"
+          | "EMAIL"
+          | "PHONE"
+          | "WECHAT"
+          | "WXAPP"
+          | "WECHAT_PHONE"
+          | "WXQY"
+          | "GITHUB";
         /**
          * app id
          */
@@ -11501,6 +11742,11 @@ export interface SessionDoc {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -11725,7 +11971,15 @@ export type Session = {
         /**
          * 密码验证，邮箱验证，手机验证，微信公众号，微信小程序，微信企业号，GITHUB
          */
-        type?: "PASSWORD" | "EMAIL" | "PHONE" | "WECHAT" | "WXAPP" | "WXQY" | "GITHUB";
+        type?:
+          | "PASSWORD"
+          | "EMAIL"
+          | "PHONE"
+          | "WECHAT"
+          | "WXAPP"
+          | "WECHAT_PHONE"
+          | "WXQY"
+          | "GITHUB";
         /**
          * app id
          */
@@ -11804,6 +12058,11 @@ export type Session = {
       | "WXAPP"
       | "WXCORP_INSEDE"
       | "WXCORP_OUTSIDE";
+    labels?: string[];
+    /**
+     * 用户类型
+     */
+    type?: string;
   } & {
     /**
      * 头像
@@ -12125,6 +12384,11 @@ export type ScopeSession = {
           | "WXAPP"
           | "WXCORP_INSEDE"
           | "WXCORP_OUTSIDE";
+        labels?: string[];
+        /**
+         * 用户类型
+         */
+        type?: string;
       } & {
         /**
          * 头像
