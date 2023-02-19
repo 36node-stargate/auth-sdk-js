@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/36node-stargate/auth-sdk-js/compare/v1.6.2...v1.8.0) (2023-02-19)
+
+
+### Features
+
+* role privileges ([5e4ff67](https://github.com/36node-stargate/auth-sdk-js/commit/5e4ff67))
+
+
+
 ## [1.7.0](https://github.com/36node-stargate/auth-sdk-js/compare/v1.6.2...v1.7.0) (2023-02-19)
 
 
