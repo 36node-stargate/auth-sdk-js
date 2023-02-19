@@ -2102,6 +2102,7 @@ export interface CreateScopeRoleRequest {
      * 角色描述
      */
     desc?: string;
+    privileges?: string[];
   } & {
     name: string;
     type: string;
@@ -2124,6 +2125,7 @@ export interface CreateScopeRoleResponse {
      * 角色描述
      */
     desc?: string;
+    privileges?: string[];
   } & {
     id: string;
     updateAt?: Date;
@@ -2153,6 +2155,7 @@ export interface ListScopeRolesResponse {
      * 角色描述
      */
     desc?: string;
+    privileges?: string[];
   } & {
     id: string;
     updateAt?: Date;
@@ -2185,6 +2188,7 @@ export interface GetScopeRoleResponse {
      * 角色描述
      */
     desc?: string;
+    privileges?: string[];
   } & {
     id: string;
     updateAt?: Date;
@@ -2208,6 +2212,7 @@ export interface UpdateScopeRoleRequest {
      * 角色描述
      */
     desc?: string;
+    privileges?: string[];
   };
 }
 export interface UpdateScopeRoleResponse {
@@ -2227,6 +2232,7 @@ export interface UpdateScopeRoleResponse {
      * 角色描述
      */
     desc?: string;
+    privileges?: string[];
   } & {
     id: string;
     updateAt?: Date;
@@ -9660,6 +9666,7 @@ export interface ScopeRoleDoc {
    * 角色描述
    */
   desc?: string;
+  privileges?: string[];
 }
 
 export type ScopeRoleCreateBody = {
@@ -9675,6 +9682,7 @@ export type ScopeRoleCreateBody = {
    * 角色描述
    */
   desc?: string;
+  privileges?: string[];
 } & {
   name: string;
   type: string;
@@ -9696,6 +9704,7 @@ export type ScopeRole = {
    * 角色描述
    */
   desc?: string;
+  privileges?: string[];
 } & {
   id: string;
   updateAt?: Date;
