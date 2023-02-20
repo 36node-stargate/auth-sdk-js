@@ -2,6 +2,15 @@
 # yarn lockfile v1
 
 
+"@36node-stargate/auth-sdk@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@36node-stargate/auth-sdk/-/auth-sdk-1.6.2.tgz#f4373e3945c10d9993461007d11c3430b2460887"
+  integrity sha512-GLmbvUg1u0eRMtQVqQ4aYpGCc3nvpxZkzpxpuXTwssa3KY1YWX8of1tpHExdy7WZfu1/jlaSwACmFTtNErXSrQ==
+  dependencies:
+    "@36node/fetch" "^0.6.4"
+    "@36node/query-normalizr" "^0.4.8"
+    commander "^2.20.0"
+
 "@36node/eslint-config@^0.6.4":
   version "0.6.4"
   resolved "https://registry.yarnpkg.com/@36node/eslint-config/-/eslint-config-0.6.4.tgz#36d7f83d9f19d7754f3752b5515fdd4bcda589c4"

@@ -48,6 +48,7 @@
     ]
   },
   "dependencies": {
+    "@36node-stargate/auth-sdk": "^1.6.2",
     "@36node/fetch": "^0.6.4",
     "@36node/query-normalizr": "^0.4.8",
     "commander": "^2.20.0"
