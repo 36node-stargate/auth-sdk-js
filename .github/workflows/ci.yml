@@ -14,17 +14,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
       - name: Eslint
         run: yarn lint
         env:
           CI: true
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
 
   publish:
     needs: [test]
